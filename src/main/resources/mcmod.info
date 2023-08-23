@@ -1,0 +1,18 @@
+[
+  {
+    "modid": ${modid},
+    "name": ${modname},
+    "description": ${modname},
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "Quarris"
+    ],
+    "credits": "Dave",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
