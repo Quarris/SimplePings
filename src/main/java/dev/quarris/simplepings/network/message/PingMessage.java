@@ -1,15 +1,14 @@
-package dev.quarris.pingmod.network.message;
+package dev.quarris.simplepings.network.message;
 
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
-import dev.quarris.pingmod.ModConfig;
-import dev.quarris.pingmod.ModRef;
-import dev.quarris.pingmod.network.PacketHandler;
-import dev.quarris.pingmod.ping.PingInfo;
-import dev.quarris.pingmod.ping.PingManager;
+import dev.quarris.simplepings.ModConfig;
+import dev.quarris.simplepings.network.PacketHandler;
+import dev.quarris.simplepings.ping.PingInfo;
+import dev.quarris.simplepings.ping.PingManager;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;

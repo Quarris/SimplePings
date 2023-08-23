@@ -17,12 +17,13 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group = "dev.quarris.pingmod" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = modid
+version = mod_version
+group = mod_group_id
+
+archivesBaseName = "${mod_id}-${mc_version}"
 
 minecraft {
-    version = "1.7.10-10.13.4.1614-1.7.10"
+    version = "${mc_version}-${forge_version}-${mc_version}"
     runDir = "run"
 }
 
@@ -30,25 +31,28 @@ dependencies {
 
 }
 
-processResources
-        {
-            // this will ensure that this task is redone when the versions change.
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
+processResources {
+    Map replaceProperties = [
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_version: mod_version,
+            mod_description: mod_description,
+            mc_version: mc_version,
+            forge_version: forge_version
+    ]
 
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
+    // this will ensure that this task is redone when the versions change.
+    inputs.properties replaceProperties
 
-                // replace version and mcversion
-                expand 'version': project.version,
-                        'mcversion': project.minecraft.version,
-                        'modid': modid,
-                        'modname': modname
-            }
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
 
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
+        expand replaceProperties
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

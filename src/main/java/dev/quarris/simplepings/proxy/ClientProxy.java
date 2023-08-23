@@ -1,11 +1,11 @@
-package dev.quarris.pingmod.proxy;
+package dev.quarris.simplepings.proxy;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import dev.quarris.pingmod.client.ClientEventHandler;
-import dev.quarris.pingmod.client.RenderIconHandler;
-import dev.quarris.pingmod.registry.KeyBindSetup;
+import dev.quarris.simplepings.client.ClientEventHandler;
+import dev.quarris.simplepings.client.RenderIconHandler;
+import dev.quarris.simplepings.registry.KeyBindSetup;
 import net.minecraftforge.common.MinecraftForge;
 
 public class ClientProxy extends CommonProxy {

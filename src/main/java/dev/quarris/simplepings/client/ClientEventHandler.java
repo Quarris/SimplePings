@@ -1,14 +1,12 @@
-package dev.quarris.pingmod.client;
+package dev.quarris.simplepings.client;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import dev.quarris.pingmod.ModConfig;
-import dev.quarris.pingmod.ModRef;
-import dev.quarris.pingmod.network.PacketHandler;
-import dev.quarris.pingmod.network.message.PingMessage;
-import dev.quarris.pingmod.ping.PingInfo;
-import dev.quarris.pingmod.ping.PingManager;
-import dev.quarris.pingmod.registry.KeyBindSetup;
+import dev.quarris.simplepings.ModConfig;
+import dev.quarris.simplepings.network.PacketHandler;
+import dev.quarris.simplepings.network.message.PingMessage;
+import dev.quarris.simplepings.ping.PingManager;
+import dev.quarris.simplepings.registry.KeyBindSetup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.MovingObjectPosition;

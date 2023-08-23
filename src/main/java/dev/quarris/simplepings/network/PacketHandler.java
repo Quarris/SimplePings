@@ -1,11 +1,10 @@
-package dev.quarris.pingmod.network;
+package dev.quarris.simplepings.network;
 
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
-import dev.quarris.pingmod.ModRef;
-import dev.quarris.pingmod.PingMod;
-import dev.quarris.pingmod.network.message.PingMessage;
+import dev.quarris.simplepings.ModRef;
+import dev.quarris.simplepings.network.message.PingMessage;
 
 public class PacketHandler {
 

@@ -1,4 +1,4 @@
-package dev.quarris.pingmod.ping;
+package dev.quarris.simplepings.ping;
 
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;

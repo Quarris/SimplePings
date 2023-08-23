@@ -1,4 +1,4 @@
-package dev.quarris.pingmod.registry;
+package dev.quarris.simplepings.registry;
 
 import net.minecraft.client.settings.KeyBinding;
 

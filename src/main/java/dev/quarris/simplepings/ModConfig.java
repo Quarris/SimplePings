@@ -1,4 +1,4 @@
-package dev.quarris.pingmod;
+package dev.quarris.simplepings;
 
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.Loader;

@@ -1,16 +1,14 @@
-package dev.quarris.pingmod.client;
+package dev.quarris.simplepings.client;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import dev.quarris.pingmod.ModRef;
-import dev.quarris.pingmod.ping.PingInfo;
-import dev.quarris.pingmod.ping.PingManager;
+import dev.quarris.simplepings.ModRef;
+import dev.quarris.simplepings.ping.PingInfo;
+import dev.quarris.simplepings.ping.PingManager;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import org.lwjgl.opengl.GL11;
 

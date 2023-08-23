@@ -1,10 +1,9 @@
-package dev.quarris.pingmod.proxy;
+package dev.quarris.simplepings.proxy;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import dev.quarris.pingmod.ModConfig;
-import dev.quarris.pingmod.network.PacketHandler;
-import dev.quarris.pingmod.ping.PingInfo;
+import dev.quarris.simplepings.ModConfig;
+import dev.quarris.simplepings.network.PacketHandler;
 
 public class CommonProxy {
 
