@@ -4,6 +4,6 @@ import net.minecraft.client.settings.KeyBinding;
 
 public class KeyBindSetup {
 
-    public static final KeyBinding pingKeyBinding = new KeyBinding("Ping Key", -98, "Ping Mod");
+    public static final KeyBinding pingKeyBinding = new KeyBinding("Ping", -98, "Simple Pings");
 
 }
