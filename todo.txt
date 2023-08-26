@@ -1,0 +1,22 @@
+v1.1
+- Add chat messages when players ping.
+    - Example: "Player [name] pinged at [X, Y, Z]"
+
+v1.2
+- Most recent unique pings requests should get stored for each player.
+    - Unique pings are ones that do not currently exist with the same type and position for the given player.
+        - If duplicate pings are received, they will refresh the corresponding existing ping, but not create a new one.
+    - Client can send as many ping requests to the server, but only the most recent unique request will be counted.
+    - Each unit of time (defined by a config), the most recent request by every player gets accepted and sent to nearby clients.
+
+v2.0
+- Keep track of specific block/entity being targeted, and display the name of the object being pinged in chat.
+
+v2.1
+- Add visual display of the object being pinged
+    - Outline of the object?
+    - Icon display?
+
+v???
+- Radial menu with different ping types
+- Teams integration
