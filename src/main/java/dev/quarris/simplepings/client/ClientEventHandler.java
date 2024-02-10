@@ -1,32 +1,42 @@
 package dev.quarris.simplepings.client;
 
+import cpw.mods.fml.common.ObfuscationReflectionHelper;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
-import dev.quarris.simplepings.ModConfig;
+import dev.quarris.simplepings.ModRef;
 import dev.quarris.simplepings.network.PacketHandler;
-import dev.quarris.simplepings.network.message.PingMessage;
-import dev.quarris.simplepings.ping.PingManager;
+import dev.quarris.simplepings.network.message.ServerBoundPingRequestPacket;
+import dev.quarris.simplepings.ping.PingInfo;
 import dev.quarris.simplepings.registry.KeyBindSetup;
+import dev.quarris.simplepings.util.PlayerUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.Vec3;
+import net.minecraft.util.Timer;
 
 public class ClientEventHandler {
 
+    private static final Timer MINECRAFT_TIMER = ObfuscationReflectionHelper.getPrivateValue(Minecraft.class, Minecraft.getMinecraft(), "field_71428_T", "timer");
+
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-        PingManager.tick();
-        if (KeyBindSetup.pingKeyBinding.isPressed()) {
-            EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-            Vec3 playerPos = player.getPosition(0);
-            Vec3 lookVec = player.getLookVec();
-            Vec3 targetVec = Vec3.createVectorHelper(lookVec.xCoord * ModConfig.raycastDistance, lookVec.yCoord * ModConfig.raycastDistance, lookVec.zCoord * ModConfig.raycastDistance);
+        if (event.phase == TickEvent.Phase.END) return;
 
-            MovingObjectPosition rayHit = Minecraft.getMinecraft().theWorld.rayTraceBlocks(playerPos, playerPos.addVector(targetVec.xCoord, targetVec.yCoord, targetVec.zCoord));
-            if (rayHit != null && rayHit.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
-                PacketHandler.INSTANCE.sendToServer(new PingMessage(rayHit.hitVec.addVector(0, 1, 0)));
+        ModRef.proxy.getPingManager().tick();
+
+        if (KeyBindSetup.pingKeyBinding.isPressed()) {
+            float partialTicks = MINECRAFT_TIMER.renderPartialTicks;
+            MovingObjectPosition rayHit = PlayerUtils.getPingRayHit(Minecraft.getMinecraft().thePlayer, partialTicks);
+            if (rayHit == null) {
+                return;
             }
+
+            PingInfo pingInfo = PingInfo.fromRay(Minecraft.getMinecraft().thePlayer, rayHit);
+            if (pingInfo == null) {
+                return;
+            }
+
+            //ModRef.proxy.getPingManager().addPing(Minecraft.getMinecraft().thePlayer, pingInfo);
+            PacketHandler.INSTANCE.sendToServer(new ServerBoundPingRequestPacket());
         }
     }
 }

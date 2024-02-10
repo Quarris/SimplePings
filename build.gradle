@@ -22,6 +22,11 @@ group = mod_group_id
 
 archivesBaseName = "${mod_id}-${mc_version}"
 
+sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
 minecraft {
     version = "${mc_version}-${forge_version}-${mc_version}"
     runDir = "run"
@@ -33,12 +38,12 @@ dependencies {
 
 processResources {
     Map replaceProperties = [
-            mod_id: mod_id,
-            mod_name: mod_name,
-            mod_version: mod_version,
+            mod_id         : mod_id,
+            mod_name       : mod_name,
+            mod_version    : mod_version,
             mod_description: mod_description,
-            mc_version: mc_version,
-            forge_version: forge_version
+            mc_version     : mc_version,
+            forge_version  : forge_version
     ]
 
     // this will ensure that this task is redone when the versions change.

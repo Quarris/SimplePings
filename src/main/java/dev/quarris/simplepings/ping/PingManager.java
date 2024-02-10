@@ -1,35 +1,20 @@
 package dev.quarris.simplepings.ping;
 
-import java.util.*;
+import java.util.Set;
 
-public class PingManager {
+public abstract class PingManager {
 
-    private static final Set<PingInfo> PINGS = new HashSet<PingInfo>();
+    /**
+     * Adds ping to the respective manager.
+     * @param pPingInfo The ping info.
+     */
+    public abstract void addPing(PingInfo pPingInfo);
 
-    public static void tick() {
-        Iterator<PingInfo> ite = PINGS.iterator();
-        while (ite.hasNext()) {
-            PingInfo ping = ite.next();
-            ping.tick();
-            if (!ping.isAlive()) {
-                ite.remove();
-            }
-        }
-    }
+    /**
+     * Updates the respective manager.
+     */
+    public abstract void tick();
 
-    public static void addPing(PingInfo ping) {
-        Iterator<PingInfo> ite = PINGS.iterator();
-        while (ite.hasNext()) {
-            PingInfo checkPing = ite.next();
-            if (checkPing.getRenderPosition().distanceTo(ping.getRenderPosition()) < 2) {
-                ite.remove();
-            }
-        }
-        PINGS.add(ping);
-    }
-
-    public static Collection<PingInfo> getPings() {
-        return Collections.unmodifiableSet(PINGS);
-    }
+    public abstract Set<Ping> getPings();
 
 }
